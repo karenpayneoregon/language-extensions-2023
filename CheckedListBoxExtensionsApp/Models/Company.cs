@@ -1,4 +1,5 @@
-﻿namespace CheckedListBoxExtensionsApp.Models
+﻿#pragma warning disable CS8618
+namespace CheckedListBoxExtensionsApp.Models
 {
     public class Company
     {
@@ -6,14 +7,11 @@
         public string Name { get; set; }
         public override string ToString() => Name;
 
+        // for Bogus
         public Company(int id)
         {
             Id = id;
         }
 
-        public Company()
-        {
-            
-        }
     }
 }

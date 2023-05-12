@@ -1,4 +1,8 @@
-﻿namespace CheckedListBoxExtensionsApp.Extensions;
+﻿using CheckedListBoxExtensionsApp.Models;
+
+#pragma warning disable CS8618
+
+namespace CheckedListBoxExtensionsApp.Extensions;
 
 public static class CheckedListBoxExtensions
 {
@@ -25,4 +29,25 @@ public static class CheckedListBoxExtensions
             sender.SetItemCheckState(index, CheckState.Unchecked);
         }
     }
+
+    /// <summary>
+    /// Get all <typeparamref name="TModel"/> items
+    /// </summary>
+    /// <param name="sender">CheckedListBox</param>
+    /// <returns></returns>
+    public static List<CheckedData<TModel>> IndexList<TModel>(this CheckedListBox sender) =>
+    (
+        from item in sender.Items.Cast<TModel>()
+            .Select(
+                (model, index) =>
+                    new CheckedData<TModel>
+                    {
+                        Index = index,
+                        Model = model
+                    }
+            )
+            .Where((x) 
+                => sender.GetItemChecked(x.Index))
+        select item
+    ).ToList();
 }

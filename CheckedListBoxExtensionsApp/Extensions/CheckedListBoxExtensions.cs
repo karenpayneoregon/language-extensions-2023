@@ -19,18 +19,6 @@ public static class CheckedListBoxExtensions
             .ToList();
 
     /// <summary>
-    /// Uncheck all items
-    /// </summary>
-    /// <param name="sender">CheckedListBox</param>
-    public static void UnCheckAll(this CheckedListBox sender)
-    {
-        foreach (int index in sender.CheckedIndices)
-        {
-            sender.SetItemCheckState(index, CheckState.Unchecked);
-        }
-    }
-
-    /// <summary>
     /// Get all <typeparamref name="TModel"/> items
     /// </summary>
     /// <param name="sender">CheckedListBox</param>
@@ -50,4 +38,16 @@ public static class CheckedListBoxExtensions
                 => sender.GetItemChecked(x.Index))
         select item
     ).ToList();
+
+    /// <summary>
+    /// Uncheck all items
+    /// </summary>
+    /// <param name="sender">CheckedListBox</param>
+    public static void UnCheckAll(this CheckedListBox sender)
+    {
+        foreach (int index in sender.CheckedIndices)
+        {
+            sender.SetItemCheckState(index, CheckState.Unchecked);
+        }
+    }
 }

@@ -35,7 +35,7 @@ public partial class Form1 : Form
 
 
 
-        if (result.Count == 0)
+        if (result.Count == 0)  
         {
             _bindingList.Clear();
             return;
